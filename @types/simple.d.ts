@@ -8,7 +8,7 @@ export interface SimpleStats {
     visible: number;
     culled: number;
 }
-declare type DisplayObjectWithCullingArray = DisplayObjectWithCulling[] & {
+type DisplayObjectWithCullingArray = DisplayObjectWithCulling[] & {
     staticObject?: boolean;
 };
 export declare class Simple {

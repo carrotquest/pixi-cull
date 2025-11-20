@@ -1,4 +1,4 @@
-import * as PIXI from 'pixi.js';
+import { Container } from 'pixi.js';
 export interface AABB {
     x: number;
     y: number;
@@ -12,7 +12,7 @@ export interface DisplayObjectSpatial {
     yEnd?: number;
     hashes: string[];
 }
-export interface DisplayObjectWithCulling extends PIXI.DisplayObject {
+export interface DisplayObjectWithCulling extends Container {
     staticObject?: boolean;
     AABB?: AABB;
     dirty?: boolean;
