@@ -1,4 +1,4 @@
-import * as PIXI from 'pixi.js'
+import { Container } from 'pixi.js'
 import { DisplayObjectWithCulling, AABB } from './types'
 
 export interface SpatialHashOptions {
@@ -29,7 +29,7 @@ interface SpatialHashBounds {
     yEnd: number
 }
 
-export interface ContainerWithCulling extends PIXI.Container {
+export interface ContainerWithCulling extends Container {
     cull?: ContainerCullObject
 }
 
@@ -126,7 +126,7 @@ export class SpatialHash {
 
     /**
      * add an array of objects to be culled
-     * @param {PIXI.Container} container
+     * @param {Container} container
      * @param {boolean} [staticObject] - set to true if the objects in the container's position/size do not change
      */
     addContainer(container: ContainerWithCulling, staticObject?: boolean) {
@@ -158,8 +158,8 @@ export class SpatialHash {
 
     /**
      * remove an array added by addContainer()
-     * @param {PIXI.Container} container
-     * @return {PIXI.Container} container
+     * @param {Container} container
+     * @return {Container} container
      */
     removeContainer(container: ContainerWithCulling): ContainerWithCulling {
         this.containers.splice(this.containers.indexOf(container), 1)

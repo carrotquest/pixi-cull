@@ -310,7 +310,7 @@ var SpatialHash = /** @class */ (function () {
     };
     /**
      * add an array of objects to be culled
-     * @param {PIXI.Container} container
+     * @param {Container} container
      * @param {boolean} [staticObject] - set to true if the objects in the container's position/size do not change
      */
     SpatialHash.prototype.addContainer = function (container, staticObject) {
@@ -340,8 +340,8 @@ var SpatialHash = /** @class */ (function () {
     };
     /**
      * remove an array added by addContainer()
-     * @param {PIXI.Container} container
-     * @return {PIXI.Container} container
+     * @param {Container} container
+     * @return {Container} container
      */
     SpatialHash.prototype.removeContainer = function (container) {
         var _this = this;

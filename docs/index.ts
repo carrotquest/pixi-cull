@@ -1,4 +1,4 @@
-import * as PIXI from 'pixi.js'
+import { Application, Container, Sprite, Texture, Ticker } from 'pixi.js'
 import { Viewport } from 'pixi-viewport'
 import random from 'yy-random'
 import forkMe from 'fork-me-github'
@@ -21,9 +21,9 @@ const HEIGHT = 50000
 const DOTS = 10000
 const DOTS_SIZE = 100
 
-let application: PIXI.Application,
+let application: Application,
     viewport: Viewport,
-    dots: PIXI.Container,
+    dots: Container,
     simple: Simple,
     hash: SpatialHash,
     stats: SpatialHashStats,
@@ -73,7 +73,7 @@ function ui() {
 
 function pixi() {
     const view = el('.pixi') as HTMLCanvasElement
-    application = new PIXI.Application({
+    application = new Application({
         width: view.offsetWidth,
         height: view.offsetHeight,
         view,
@@ -89,9 +89,9 @@ function pixi() {
     viewport.drag().pinch().decelerate().wheel()
     viewport.resize(view.offsetWidth, view.offsetHeight, WIDTH, HEIGHT)
     viewport.fitWidth(5000)
-    const ticker = PIXI.Ticker
+    const ticker = Ticker
     ticker.shared.add(update)
-    // _test = _viewport.addChild(new PIXI.Graphics())
+    // _test = _viewport.addChild(new Graphics())
 
     window.addEventListener('resize', () => {
         // weird hack needed for flexbox to work correctly; probably a better way to do this
@@ -104,9 +104,9 @@ function pixi() {
 }
 
 function createDots() {
-    dots = viewport.addChild(new PIXI.Container())
+    dots = viewport.addChild(new Container())
     for (let i = 0; i < DOTS; i++) {
-        const dot = dots.addChild(new PIXI.Sprite(PIXI.Texture.WHITE))
+        const dot = dots.addChild(new Sprite(Texture.WHITE))
         dot.tint = random.color()
         dot.width = dot.height = DOTS_SIZE
         dot.position.set(random.range(START_X, WIDTH), random.range(START_Y, HEIGHT))

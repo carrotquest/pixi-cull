@@ -45939,7 +45939,7 @@ ${parts.join("\n")}
       };
       /**
        * add an array of objects to be culled
-       * @param {PIXI.Container} container
+       * @param {Container} container
        * @param {boolean} [staticObject] - set to true if the objects in the container's position/size do not change
        */
       SpatialHash.prototype.addContainer = function (container, staticObject) {
@@ -45969,8 +45969,8 @@ ${parts.join("\n")}
       };
       /**
        * remove an array added by addContainer()
-       * @param {PIXI.Container} container
-       * @return {PIXI.Container} container
+       * @param {Container} container
+       * @return {Container} container
        */
       SpatialHash.prototype.removeContainer = function (container) {
           var _this = this;
@@ -46455,7 +46455,7 @@ ${parts.join("\n")}
       viewport.fitWidth(5000);
       var ticker = Ticker;
       ticker.shared.add(update);
-      // _test = _viewport.addChild(new PIXI.Graphics())
+      // _test = _viewport.addChild(new Graphics())
       window.addEventListener('resize', function () {
           // weird hack needed for flexbox to work correctly; probably a better way to do this
           application.renderer.resize(0, 0);
