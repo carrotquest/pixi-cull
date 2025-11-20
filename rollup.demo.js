@@ -4,15 +4,14 @@ import typescript from '@rollup/plugin-typescript'
 
 export default
     {
+        preserveEntrySignatures: false,
         input: 'docs/index.ts',
         plugins: [
             nodeResolve({
                 browser: true,
                 preferBuiltins: false,
             }),
-            commonjs({
-                namedExports: { 'resource-loader': ['Resource'] }
-            }),
+            commonjs(),
             typescript({
                 'esModuleInterop': true,
                 'skipLibCheck': true,
@@ -22,5 +21,6 @@ export default
             file: 'docs/index.js',
             format: 'iife',
             sourcemap: true,
+            inlineDynamicImports: true,
         }
     }

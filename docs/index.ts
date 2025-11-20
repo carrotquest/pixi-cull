@@ -79,7 +79,13 @@ function pixi() {
         view,
         backgroundAlpha: 0
     })
-    viewport = application.stage.addChild(new Viewport())
+    viewport = application.stage.addChild(new Viewport({
+        screenWidth: view.offsetWidth,
+        screenHeight: view.offsetHeight,
+        worldWidth: WIDTH,
+        worldHeight: HEIGHT,
+        events: application.renderer.events
+    }))
     viewport.drag().pinch().decelerate().wheel()
     viewport.resize(view.offsetWidth, view.offsetHeight, WIDTH, HEIGHT)
     viewport.fitWidth(5000)

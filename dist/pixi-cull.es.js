@@ -26,7 +26,7 @@ var __assign = function() {
 
 var defaultSimpleOptions = {
     visible: 'visible',
-    dirtyTest: false
+    dirtyTest: false,
 };
 var Simple = /** @class */ (function () {
     /**
@@ -66,7 +66,11 @@ var Simple = /** @class */ (function () {
      * @return {Array} array
      */
     Simple.prototype.removeList = function (array) {
-        this.lists.splice(this.lists.indexOf(array), 1);
+        var index = this.lists.indexOf(array);
+        if (index === -1) {
+            return array;
+        }
+        this.lists.splice(index, 1);
         return array;
     };
     /**
@@ -95,7 +99,11 @@ var Simple = /** @class */ (function () {
      * @return {DisplayObjectWithCulling} object
      */
     Simple.prototype.remove = function (object) {
-        this.lists[0].splice(this.lists[0].indexOf(object), 1);
+        var index = this.lists[0].indexOf(object);
+        if (index === -1) {
+            return object;
+        }
+        this.lists[0].splice(index, 1);
         return object;
     };
     /**
@@ -179,7 +187,8 @@ var Simple = /** @class */ (function () {
             for (var _b = 0, list_1 = list; _b < list_1.length; _b++) {
                 var object = list_1[_b];
                 var box = object.AABB;
-                if (box.x + box.width > bounds.x && box.x - box.width < bounds.x + bounds.width &&
+                if (box &&
+                    box.x + box.width > bounds.x && box.x - box.width < bounds.x + bounds.width &&
                     box.y + box.height > bounds.y && box.y - box.height < bounds.y + bounds.height) {
                     results.push(object);
                 }
@@ -200,7 +209,8 @@ var Simple = /** @class */ (function () {
             for (var _b = 0, list_2 = list; _b < list_2.length; _b++) {
                 var object = list_2[_b];
                 var box = object.AABB;
-                if (box.x + box.width > bounds.x && box.x - box.width < bounds.x + bounds.width &&
+                if (box &&
+                    box.x + box.width > bounds.x && box.x - box.width < bounds.x + bounds.width &&
                     box.y + box.height > bounds.y && box.y - box.height < bounds.y + bounds.height) {
                     if (callback(object)) {
                         return true;
@@ -232,7 +242,7 @@ var SpatialHashDefaultOptions = {
     xSize: 1000,
     ySize: 1000,
     simpleTest: true,
-    dirtyTest: true
+    dirtyTest: true,
 };
 var SpatialHash = /** @class */ (function () {
     /**
